@@ -3,6 +3,7 @@ Commands:
 
 adf - add to folder - Add the path to the current folder to the list of paths.
 gt - go to folder (param: targetFolder) - Goes to the selected target folder if its path exists in the folders registry.
+ogit - open git (param: targetFolder) - 
 '''
 
 # The path to the file that contains the list of paths to the most frequently used folders. 
@@ -108,3 +109,12 @@ function GoToFolder {
   
 }
 Set-Alias -Name gt -Value GoToFolder
+
+function StartGitBash {
+    param ($targetFolder)
+    gt $targetFolder
+    Start-Process "C:\Program Files\Git\git-bash.exe"
+
+}
+
+Set-Alias -Name ogit -Value StartGitBash
