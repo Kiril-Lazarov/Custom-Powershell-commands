@@ -1,0 +1,4 @@
+﻿$foldersPaths = [System.Collections.ArrayList]@(
+
+
+            )
