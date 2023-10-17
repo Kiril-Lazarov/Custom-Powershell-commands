@@ -3,16 +3,21 @@ Commands:
 
 adf - add to folder - Add the path to the current folder to the list of paths.
 gt - go to folder (param: targetFolder) - Goes to the selected target folder if its path exists in the folders registry.
-ogit - open git (param: targetFolder) - 
+ogit - open git (param: targetFolder) - Open gitBash in the selected folder
+fef - fill electricity form - open the page for electricity payments and automaticaly fill the data in the input fields
 '''
 
 # The path to the file that contains the list of paths to the most frequently used folders. 
 # The file is in .ps1 format to avoid user authorization issues.
-$filePath = ""
+$filePath = "C:\Users\lenovo\Documents\WindowsPowerShell\foldersRegistry.ps1"
 Import-Module -Name $filePath
 . $filePath
 $folders  = $foldersPaths
 
+$open_tabs = "C:\Users\lenovo\Desktop\papka\Python-Scripts\test_python.py\open_tabs.txt"
+$greetings = "C:\Users\lenovo\Desktop\papka\Python-Scripts\test_python.py\greetings.py"
+$go = "C:\Users\lenovo\Desktop\papka\Python-Scripts\test_python.py\go_to_folder.txt"
+$gt = "C:\Users\lenovo\Desktop\papka\Python-Scripts\test_python.py\goto.ps1"
 
 function addFolder{
     $currPath = [string](Get-Location)
@@ -118,3 +123,11 @@ function StartGitBash {
 }
 
 Set-Alias -Name ogit -Value StartGitBash
+
+function FillElectricityForm {
+    $pathToPythonScript = ""
+    Invoke-Expression "cd $pathToPythonScript"
+    Invoke-Expression "python ./fill_electricity_form.py"
+
+}
+Set-Alias -Name fef -Value FillElectricityForm
